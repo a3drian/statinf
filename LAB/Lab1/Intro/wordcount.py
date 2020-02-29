@@ -40,6 +40,7 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 
 def print_words(filename):
+    print(filename)
     return
 
 def print_top(filename):
