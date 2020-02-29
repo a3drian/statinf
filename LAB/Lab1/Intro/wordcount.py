@@ -39,11 +39,76 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
-def print_words(filename):
+def open_file(filename):
+
     print(filename)
-    return
+
+    words = []
+
+    f = open(filename, 'rt')    # able to read line by line
+    for line in f:
+        print(line)
+        word = line.split()
+        words.append(word)
+
+    # print(words)
+
+    return words
+
+
+def get_dictionary(words):
+
+    aux = []
+
+    for word in words:
+        for w in word:
+            x = w.lower()
+            aux.append(x)
+
+    # print(aux)
+    aux.sort()
+    # print(aux)
+
+    dictionar = {}
+
+    for a in aux:
+        dictionar[a] = 0
+
+    for a in aux:
+        count = dictionar[a]
+        count += 1
+        dictionar[a] = count
+
+    return dictionar
+
+
+def print_words(filename):
+
+    words = open_file(filename)
+
+    dictionar = get_dictionary(words)
+
+    #print(dictionar)
+
+    for d in dictionar:
+        print(d, dictionar[d])
+
+    return dictionar
+
 
 def print_top(filename):
+
+    words = open_file(filename)
+
+    dictionar = get_dictionary(words)
+
+    #print(dictionar)
+
+    for d in dictionar:
+        print(d, dictionar[d])
+
+    #WIP:
+
     return
 
 
