@@ -126,9 +126,9 @@ def print_top(filename):
     n = 20
     index = 0
 
-    print(n, "most common words:")
+    print(n, "most common words:", n)
     for s in swap_reversed:
-        print(s[0], s[1])
+        print(s[1], s[0])
         index += 1
         if index >= n:
             break
