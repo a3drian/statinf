@@ -42,12 +42,13 @@ import sys
 def open_file(filename):
 
     print(filename)
+    print()
 
     words = []
 
     f = open(filename, 'rt')    # able to read line by line
     for line in f:
-        print(line)
+        #print(line)
         word = line.split()
         words.append(word)
 
@@ -88,12 +89,16 @@ def print_words(filename):
 
     dictionar = get_dictionary(words)
 
-    #print(dictionar)
+    # print(dictionar)
 
     for d in dictionar:
         print(d, dictionar[d])
 
     return dictionar
+
+
+def extract(tuple):
+    return tuple[0]
 
 
 def print_top(filename):
@@ -102,12 +107,31 @@ def print_top(filename):
 
     dictionar = get_dictionary(words)
 
-    #print(dictionar)
+    # print(dictionar)
+
+    swap = []   # nu mai merge dictionar ca se suprascriu valorile
 
     for d in dictionar:
-        print(d, dictionar[d])
+        t = ()
+        v = dictionar[d]
+        t = (v, d)
+        swap.append(t)
 
-    #WIP:
+    # print(swap)
+
+    swap_reversed = sorted(swap, key=extract, reverse=True)
+
+    # print(swap_reversed)
+
+    n = 20
+    index = 0
+
+    print(n, "most common words:")
+    for s in swap_reversed:
+        print(s[0], s[1])
+        index += 1
+        if index >= n:
+            break
 
     return
 
